@@ -4,11 +4,13 @@ NoteWell is a simple and user-friendly note-taking web application. The interfac
 
 ## Preview
 
+
 ## What is the use of this Repo
 
 This Repo is used for the development of college project, noteWell, a note taking web application.
 
 ## Prerequisites
+![mobile](https://user-images.githubusercontent.com/61013432/213843262-0e088542-25d7-4393-82cf-f2593d613ff3.png)
 
 Before you begin, ensure you have met the following requirements:
 

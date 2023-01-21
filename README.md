@@ -1,44 +1,36 @@
-# Noteaza  
- Note-taking service
- 
+# noteWell
+
+NoteWell is a simple and user-friendly note-taking web application. The interface is clean and intuitive, making it easy to navigate and find the notes you need. With NoteWell, users can quickly and easily jot down important information, such as to-do lists, ideas, or reminders.
+
 ## Preview
-![mobile](https://user-images.githubusercontent.com/61013432/200514398-67bd0877-5bf9-4ac1-a173-aed3c61f4d38.png)
-
-
 
 ## What is the use of this Repo
 
-This Project is a Note taking app similar to Google Keep made using Create-React-App.
+This Repo is used for the development of college project, noteWell, a note taking web application.
 
 ## Prerequisites
 
-### Install Node JS
-Refer to https://nodejs.org/en/ to install nodejs
+Before you begin, ensure you have met the following requirements:
 
-### Install create-react-app
-Install create-react-app npm package globally. This will help to easily run the project and also build the source files easily. Use the following command to install create-react-app
+1. You have installed the latest version of Node.js and npm.
+2. You have a basic understanding of React and its concepts.
+3. You have a code editor of your choice installed.
 
-```bash
-npm install -g create-react-app
-```
+## Installation
 
+To set up the project on your local machine, follow these steps:
 
-## Cloning and Running the Application in local
+1. Clone the repository to your local machine using git clone `https://github.com/Bishal-Pahari/noteWell.git`
+2. Navigate to the project's root directory and run npm install to install all the necessary dependencies.
+3. Run `npm start` to start the development server and launch the application in your browser.
 
-Clone the project into local
+## Additional Libraries
 
-Install all the npm packages. Go into the project folder and type the following command to install all npm packages
+This project uses some additional libraries that are not included in the core React library. They are:
 
-```bash
-npm install
-```
+- React-Router-Dom for routing.
+- Firebase for database and authentication.
 
-In order to run the application Type the following command
+You can install them by running the command `npm install --save react-router-dom firebase`
 
-```bash
-npm start
-```
-
-The Application Runs on **localhost:3000**
-
-
+Make sure to also configure your Firebase project by adding your API keys in the appropriate configuration files and set up the required Firebase services for your project.

@@ -21,9 +21,30 @@ const CreateArea = (props) => {
   };
 
   const submitNote = (event) => {
-    props.onAdd(note);
-    setNote({ title: "", content: "" });
-    event.preventDefault();
+    if (!note.content) {
+      showNotification("Title and content cannot be empty!");
+
+      event.preventDefault();
+    } else {
+      props.onAdd(note);
+      setNote({ title: "", content: "" });
+      event.preventDefault();
+    }
+  };
+
+  const showNotification = (message) => {
+    // check if browser supports notifications
+    if (!("Notification" in window)) {
+      alert("content cannot be empty!");
+    } else if (Notification.permission === "granted") {
+      new Notification(message);
+    } else if (Notification.permission !== "denied") {
+      Notification.requestPermission().then(function (permission) {
+        if (permission === "granted") {
+          new Notification(message);
+        }
+      });
+    }
   };
 
   const expand = () => {

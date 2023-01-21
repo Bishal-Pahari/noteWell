@@ -7,8 +7,12 @@ export default function Note(props) {
 
   return (
     <div className="note">
-      <h1>{props.title}</h1>
-      <p>{props.content}</p>
+      <h1 contentEditable={true} style={{ outline: "none" }}>
+        {props.title}
+      </h1>
+      <p contentEditable={true} style={{ outline: "none" }}>
+        {props.content}
+      </p>
       <button onClick={handleClick}>Delete</button>
     </div>
   );

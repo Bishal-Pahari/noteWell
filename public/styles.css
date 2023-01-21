@@ -138,6 +138,7 @@ form.create-note button {
 .dropdown-menu-container {
   position: absolute;
   top: 4.5rem;
+  margin-right: 1rem;
   right: 0;
   z-index: 1;
   background: #d9d9d9;
@@ -223,7 +224,7 @@ hr {
   align-items: center;
   gap: 1rem;
   margin: 1rem auto;
-  background: rgb(131, 131, 131);
+  background: #c7c7c7;
   box-shadow: 0 4px 4px 0 #736f6f;
   filter: drop-shadow(0 4px 4px #736f6f);
   -webkit-filter: drop-shadow(0 4px 4px #736f6f);
@@ -239,5 +240,11 @@ hr {
 .Oauth:hover {
   user-select: none;
   background: rgb(85, 83, 83);
-  color: #fffcfc;
+  color: #c7c7c7;
+}
+
+h6 {
+  font-family: "freehand", cursive;
+  font-weight: 400;
+  font-size: 1.2rem;
 }

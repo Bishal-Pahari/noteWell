@@ -8,6 +8,7 @@ const Home = () => {
         <div className="signIn-card">
           <img src="/assets/logo.png" className="signIn-card_img" alt="" />
           <h1 className="signIn-Name">noteWell</h1>
+          <h6>Simplify note-taking with Notewell</h6>
           <hr className="signIn-hr" />
           <div className="Oauth">
             <FcGoogle size={40} color="#4285F4" />

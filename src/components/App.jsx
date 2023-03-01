@@ -6,9 +6,9 @@ import Footer from "./Footer";
 import CreateArea from "./CreateArea";
 import { useState } from "react";
 
-export default function App() {
+export default function App({profileURL}) {
   const [notes, setNotes] = useState([]);
-
+  console.log(profileURL);
   const addNote = (newNote) => {
     setNotes((prevNotes) => {
       return [...prevNotes, newNote];
@@ -25,7 +25,7 @@ export default function App() {
 
   return (
     <div>
-      <Header />
+      <Header profileURL={profileURL}/>
       <CreateArea onAdd={addNote} />
       {notes.map((noteItem, index) => {
         return (

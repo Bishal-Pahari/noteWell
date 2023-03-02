@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 
-export default function Header() {
+export default function Header({profileURL}) {
   const [showDropdown, setShowDropdown] = useState(false);
   return (
     <header>
@@ -15,7 +15,7 @@ export default function Header() {
       </div>
       <div>
         <img
-          src="/assets/user.png"
+          src={profileURL}
           className="user-profile_img"
           alt="user"
           onClick={() => setShowDropdown(!showDropdown)}

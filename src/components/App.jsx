@@ -6,7 +6,7 @@ import Footer from "./Footer";
 import CreateArea from "./CreateArea";
 import { useState } from "react";
 
-export default function App({profileURL}) {
+export default function App({ profileURL }) {
   const [notes, setNotes] = useState([]);
   console.log(profileURL);
   const addNote = (newNote) => {
@@ -25,19 +25,21 @@ export default function App({profileURL}) {
 
   return (
     <div>
-      <Header profileURL={profileURL}/>
+      <Header profileURL={profileURL} />
       <CreateArea onAdd={addNote} />
-      {notes.map((noteItem, index) => {
-        return (
-          <Note
-            key={index}
-            id={index}
-            title={noteItem.title}
-            content={noteItem.content}
-            onDelete={deleteNote}
-          />
-        );
-      })}
+      <div className="note-area">
+        {notes.map((noteItem, index) => {
+          return (
+            <Note
+              key={index}
+              id={index}
+              title={noteItem.title}
+              content={noteItem.content}
+              onDelete={deleteNote}
+            />
+          );
+        })}
+      </div>
 
       <Footer />
     </div>

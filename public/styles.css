@@ -10,11 +10,13 @@ html {
 }
 
 body {
+  position: relative;
   background: #eee;
   padding: 0 16px;
   overflow-x: hidden;
   margin: 0;
   padding: 0;
+  min-height: 100vh;
 }
 
 header {
@@ -32,38 +34,50 @@ header {
 }
 
 header h1 {
-  color: #000;
+  color: #3f3c3c;
   font-family: "monument", sans-serif;
   font-weight: 200;
-  font-size: 1.5rem;
+  font-size: 1.2rem;
+  letter-spacing: 1px;
 }
 
 footer {
   position: absolute;
-  text-align: center;
   bottom: 0;
+  text-align: center;
   width: 100%;
-  height: 2.5rem;
+  background: rgb(218, 218, 218);
+  padding: 0.2rem 0;
 }
 
 footer p {
   color: #868585;
   font-family: "montserrat", sans-serif;
 }
+
+.note-area {
+  padding-bottom: 1rem;
+  display: flex;
+  align-items: flex-start;
+  flex-wrap: wrap;
+}
+
 .note {
+  max-width: 97vw;
+  display: inline-block;
   background: #fff;
   border-radius: 7px;
   -webkit-box-shadow: 0 2px 5px #ccc;
   box-shadow: 0 2px 5px #ccc;
   padding: 10px;
-  width: 240px;
   margin: 16px;
-  float: left;
 }
+
 .note h1 {
   font-size: 1.1em;
   margin-bottom: 6px;
 }
+
 .note p {
   font-size: 1.1em;
   margin-bottom: 10px;
@@ -119,7 +133,7 @@ form.create-note button {
 }
 
 .logo-header {
-  width: 4.5rem;
+  width: 3.5rem;
 }
 
 .user-profile_img {
@@ -136,6 +150,7 @@ form.create-note button {
 }
 
 .dropdown-menu-container {
+  display: inline-block;
   position: absolute;
   top: 4.5rem;
   margin-right: 1rem;
@@ -143,7 +158,7 @@ form.create-note button {
   z-index: 1;
   background: #d9d9d9;
   border-radius: 0.5rem;
-  width: 15%;
+  /* width: 15%; */
   text-align: flex-start;
   padding: 1rem;
   gap: 1rem;
@@ -186,11 +201,11 @@ hr {
 
 .signIn-card {
   width: 20rem;
-  background: #736f6f;
+  background: #c8c8c8;
   border-radius: 0.5rem;
-  box-shadow: 0 4px 4px 0 #736f6f;
-  filter: drop-shadow(0px 4px 4px #736f6f);
-  -webkit-filter: drop-shadow(0px 4px 4px #736f6f);
+  box-shadow: 0 4px 4px 0 #c8c8c8;
+  filter: drop-shadow(0px 4px 4px #c8c8c8);
+  -webkit-filter: drop-shadow(0px 4px 4px #c8c8c8);
   -webkit-border-radius: 0.5rem;
   -moz-border-radius: 0.5rem;
   -ms-border-radius: 0.5rem;
@@ -207,7 +222,7 @@ hr {
 }
 
 .signIn-card_img {
-  width: 10rem;
+  width: 8rem;
   margin: 2rem 0 0.5rem;
 }
 
@@ -239,8 +254,9 @@ hr {
 
 .Oauth:hover {
   user-select: none;
-  background: rgb(85, 83, 83);
+  background: rgb(105, 105, 105);
   color: #c7c7c7;
+  cursor: pointer;
 }
 
 h6 {
@@ -248,4 +264,60 @@ h6 {
   font-weight: 400;
   font-size: 1.3rem;
   color: #202020;
+}
+
+/* tablet responsive */
+
+@media screen and (min-width: 768px) and (max-width: 1024px) {
+  .signIn-card {
+    margin-top: 10rem;
+    width: 80%;
+  }
+
+  .signIn-Name {
+    font-size: 2rem;
+  }
+
+  .signIn-card_img {
+    width: 10rem;
+  }
+
+  h6 {
+    font-size: 2rem;
+  }
+
+  .Oauth {
+    width: 60%;
+    box-shadow: none;
+  }
+}
+
+/* Mobile Responsive */
+
+@media only screen and (max-width: 768px) {
+  .logo-text > img {
+    display: none;
+  }
+
+  .signIn-card {
+    background: none;
+    box-shadow: none;
+    margin-top: 3rem;
+  }
+
+  hr {
+    display: none;
+  }
+
+  h6 {
+    margin-bottom: 10rem;
+  }
+
+  .Oauth {
+    box-shadow: none;
+  }
+
+  .note {
+    max-width: 92vw;
+  }
 }

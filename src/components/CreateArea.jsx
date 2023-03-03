@@ -1,13 +1,19 @@
 import React from "react";
 import { useState } from "react";
 
+import {app,db,auth} from './firebase';
+import {addDoc,collection} from 'firebase/firestore';
+
 const CreateArea = (props) => {
   const [isExpanded, setIsExpanded] = useState(false);
+  const [notesLibrary,setNotesLibrary]=useState([]);
+
 
   const [note, setNote] = useState({
     title: "",
     content: "",
   });
+  // const notesCollectionRef = collection(db,"notes");
 
   const handleChange = (event) => {
     const { name, value } = event.target;

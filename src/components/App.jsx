@@ -54,18 +54,21 @@ export default function App({profileURL,profileName,userId}) {
     <div>
       <Header profileURL={profileURL} profileName={profileName}/>
       <CreateArea onAdd={addNote} />
+      <div className="note-area">
+        {notes.map((noteItem, index) => {
+          return (
+            <Note
+              key={index}
+              id={index}
+              title={noteItem.title}
+              content={noteItem.content}
+              onDelete={deleteNote}
+            />
+          );
+        })}
+      </div>
 
-      {notes.map((noteItem, index) => {
-        return (
-          <Note
-            key={index}
-            id={index}
-            title={noteItem.title}
-            content={noteItem.content}
-            onDelete={deleteNote}
-          />
-        );
-      })}
+
 
       <Footer />
     </div>

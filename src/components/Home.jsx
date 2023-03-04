@@ -1,31 +1,64 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { GoogleLoginButton } from "react-social-login-buttons";
 import { LoginSocialGoogle } from "reactjs-social-login";
 import App from "./App";
 import { FcGoogle } from "react-icons/fc";
-const Home = () => {
-  const [showMain, setShowMain] = useState(false);
-  const [showSignIn, setShowSignIn] = useState(true);
-  const [userImageUrl, setUserImageUrl] = useState(null);
-  
-  const onLoginSuccess = ({provider,data}) => {
-    setShowSignIn(false);
-    setShowMain(true);
-    setUserImageUrl(data.picture);
-   
-    console.log("login success",provider,data);
+import { GoogleAuthProvider, signInWithPopup } from "firebase/auth";
+import { auth,db } from "./firebase";
+import { getAuth, onAuthStateChanged } from "firebase/auth";
+import {collection,addDoc} from 'firebase/firestore';
 
+import { getDatabase, ref, set } from "firebase/database";
+
+import "firebase/auth";
+const provider = new GoogleAuthProvider();
+const Home = () => {
+
+
+  const [userImageUrl, setUserImageUrl] = useState(null);
+  const [userName, setuserName] = useState("");
+  const [userEmail, setUserEmail] = useState("");
+  const [userId,setUserId]=useState("");
+ 
+  const onLoginSuccess = () => {
+    signInWithPopup(auth, provider).then((data) => {
+      setUserImageUrl(data.user.photoURL);
+      setuserName(data.user.displayName);
+      setUserEmail(data.user.email);
+      localStorage.setItem("email", data.user.email);
+      localStorage.setItem("name", data.user.displayName);
+      localStorage.setItem("image", data.user.photoURL);
+
+    });
   };
-  const onFailureSuccess = (response) => {
-    setShowSignIn(true);
-    setShowMain(false);
-    console.log("login failure", response);
-  };
+
+  onAuthStateChanged(auth, (user) => {
+    if (user) {
+      // User is signed in, see docs for a list of available properties
+      // https://firebase.google.com/docs/reference/js/firebase.User
+      setUserId(user.uid)
+      // ...
+    } else {
+      // User is signed out
+      // ...
+    }
+  });
+
+  useEffect(() => {
+    setUserEmail(localStorage.getItem("email"));
+    setuserName(localStorage.getItem("name"));
+    setUserImageUrl(localStorage.getItem("image"));
+   
+  });
+
+
+
 
   return (
     <>
-
-      {showSignIn ? 
+      {userImageUrl && userEmail && userName ? (
+        <App profileURL={userImageUrl} profileName={userName} userId={userId} />
+      ) : (
         <div className="signIn-container">
           <div className="signIn-card">
             <img src="/assets/logo.png" className="signIn-card_img" alt="" />
@@ -33,25 +66,13 @@ const Home = () => {
             <h6>Simplify note-taking with Notewell</h6>
             <hr className="signIn-hr" />
 
-            <LoginSocialGoogle
-              className="Oauth"
-              client_id={
-                process.env.REACT_APP_GG_APP_ID ||
-                "394539505461-m753i156gsac99jfo3f1i1elkv64hpi7.apps.googleusercontent.com"
-              }
-              scope="openid profile email"
-              discoveryDocs="claims_supported"
-              access_type="offline"
-              onResolve={onLoginSuccess}
-              onReject={onFailureSuccess}
-            >
+            <div className="Oauth" onClick={onLoginSuccess}>
               <FcGoogle size={40} color="#4285F4" />
               <p>SIGN IN USING GOOGLE</p>
-            </LoginSocialGoogle>
+            </div>
           </div>
         </div>
-       : null}
-      {showMain?(<App profileURL={userImageUrl}/>):null}
+      )}
     </>
   );
 };

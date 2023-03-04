@@ -64,25 +64,32 @@ footer p {
 
 .note {
   max-width: 97vw;
-  display: inline-block;
+  display: flex;
   background: #fff;
   border-radius: 7px;
   -webkit-box-shadow: 0 2px 5px #ccc;
   box-shadow: 0 2px 5px #ccc;
   padding: 10px;
+  flex-direction: column;
   margin: 16px;
 }
 
-.note h1 {
+.note__title {
   font-size: 1.1em;
   margin-bottom: 6px;
+  border: none;
+  outline: none;
+  display: inline-block;
 }
 
-.note p {
+.note__content{
   font-size: 1.1em;
   margin-bottom: 10px;
   white-space: pre-wrap;
   word-wrap: break-word;
+  border: none;
+  outline: none;
+  display: inline-block;
 }
 
 .note button {

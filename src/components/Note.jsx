@@ -1,8 +1,9 @@
 
 
 import React from "react";
-import { useState } from "react";
+import { useState,useRef  } from "react";
 export default function Note(props) {
+  const textAreaRef = useRef(null);
   const [noteObj, setNoteObj] = useState({
     title: props.title,
     content: props.content,
@@ -23,7 +24,11 @@ export default function Note(props) {
 
     props.onUpdate(props.id, noteObj);
   };
-
+  function autoResize() {
+    const textarea = textAreaRef.current;
+    textarea.style.height = "auto";
+    textarea.style.height = textarea.scrollHeight + "px";
+  }
   const handleChangeForContent = (event) => {
     setNoteObj((prevNote) => {
       return {
@@ -32,6 +37,7 @@ export default function Note(props) {
       };
     });
     props.onUpdate(props.id, noteObj);
+    autoResize();
   };
   return (
     <div className="note">
@@ -43,11 +49,11 @@ export default function Note(props) {
       />
 
       <textarea
+       ref={textAreaRef}
         value={noteObj.content}
         onChange={handleChangeForContent}
         className="note__content"
         size={noteObj.content.length}
-        rows="6"
       />
 
       <button onClick={handleClick}>Delete</button>

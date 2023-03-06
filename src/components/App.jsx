@@ -22,28 +22,27 @@ export default function App({ profileURL, profileName, userId }) {
 
   const addNote = (newNote) => {
     setNotes((prevNotes) => {
-      const updatedNotes = [...prevNotes, newNote];
+      const updatedNotes = [...prevNotes, {...newNote, id: Date.now()}];
       // Update Firebase with the new note
       set(ref(db, `users/${userId}/notes`), updatedNotes);
       return updatedNotes;
     });
   };
-
-  const deleteNote = (id) => {
+  
+  const deleteNote = (id) => { // Use id instead of index
     setNotes((prevNotes) => {
-      const updatedNotes = prevNotes.filter((noteItem, index) => {
-        return index !== id;
+      const updatedNotes = prevNotes.filter((noteItem) => { // Use note object instead of index
+        return noteItem.id !== id; // Use id instead of index
       });
       // Update Firebase with the updated notes list
       set(ref(db, `users/${userId}/notes`), updatedNotes);
       return updatedNotes;
     });
   };
-
   const updateNote = (id, updatedNote) => {
     setNotes((prevNotes) => {
       const updatedNotes = notes.map((noteItem, index) => {
-        if (index == id) {
+        if ( noteItem.id  == id) {
           return updatedNote;
         } else {
           return noteItem;
@@ -56,18 +55,17 @@ export default function App({ profileURL, profileName, userId }) {
 
   return (
     <div>
-      <Header profileURL={profileURL} profileName={profileName} />
       <CreateArea onAdd={addNote} />
       <div className="note-area">
         {notes.map((noteItem, index) => {
           return (
             <Note
-              key={index}
-              id={index}
-              title={noteItem.title}
-              content={noteItem.content}
-              onDelete={deleteNote}
-              onUpdate={updateNote}
+            key={noteItem.id}
+            id={noteItem.id} 
+            title={noteItem.title}
+            content={noteItem.content}
+            onDelete={deleteNote}
+            onUpdate={updateNote}
             />
           );
         })}

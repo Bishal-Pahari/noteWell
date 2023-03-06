@@ -9,8 +9,9 @@ import { getAuth, onAuthStateChanged } from "firebase/auth";
 import {collection,addDoc} from 'firebase/firestore';
 
 import { getDatabase, ref, set } from "firebase/database";
-
+import Header from './Header';
 import "firebase/auth";
+import {  signOut } from "firebase/auth";
 const provider = new GoogleAuthProvider();
 const Home = () => {
 
@@ -52,12 +53,27 @@ const Home = () => {
   });
 
 
+  const logOut=()=>{
+
+    signOut(auth).then(() => {
+      setUserEmail(localStorage.clear("email"));
+      setuserName(localStorage.clear("name"));
+      setUserImageUrl(localStorage.clear("image"));
+    }).catch((error) => {
+      collection.log("error");
+    });
+   
+  }
+
 
 
   return (
     <>
       {userImageUrl && userEmail && userName ? (
+        <>
+        <Header profileURL={userImageUrl} profileName={userName} logOut={logOut}/>
         <App profileURL={userImageUrl} profileName={userName} userId={userId} />
+        </>
       ) : (
         <div className="signIn-container">
           <div className="signIn-card">

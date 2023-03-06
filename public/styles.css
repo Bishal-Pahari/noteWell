@@ -3,6 +3,7 @@
   margin: 0;
   -webkit-box-sizing: border-box;
   box-sizing: border-box;
+  background: none;
 }
 
 html {
@@ -101,15 +102,19 @@ footer p {
 
 .note button {
   position: relative;
-  float: right;
-  margin-right: 10px;
+  background: #fbeded;
   color: red;
   border: none;
   width: 36px;
   height: 36px;
   cursor: pointer;
-  outline: none;
+
   font-size: 0.7rem;
+  border-radius: 75%;
+  -webkit-border-radius: 75%;
+  -moz-border-radius: 75%;
+  -ms-border-radius: 75%;
+  -o-border-radius: 75%;
 }
 
 form.create-note {

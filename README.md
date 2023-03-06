@@ -10,8 +10,6 @@ NoteWell is a simple and user-friendly note-taking web application. The interfac
 This Repo is used for the development of college project, noteWell, a note taking web application.
 
 ## Prerequisites
-![mobile](https://user-images.githubusercontent.com/61013432/213843262-0e088542-25d7-4393-82cf-f2593d613ff3.png)
-
 Before you begin, ensure you have met the following requirements:
 
 1. You have installed the latest version of Node.js and npm.
@@ -36,3 +34,6 @@ This project uses some additional libraries that are not included in the core Re
 You can install them by running the command `npm install --save react-router-dom firebase`
 
 Make sure to also configure your Firebase project by adding your API keys in the appropriate configuration files and set up the required Firebase services for your project.
+
+## Preview
+![mobile](https://user-images.githubusercontent.com/61013432/223122437-f30d165e-518f-48db-bc7d-6c683f03c76f.png)

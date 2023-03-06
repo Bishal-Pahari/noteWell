@@ -75,21 +75,29 @@ footer p {
 }
 
 .note__title {
-  font-size: 1.1em;
+  font-size: 24px;
   margin-bottom: 6px;
   border: none;
   outline: none;
   display: inline-block;
+  font-weight: 500;
 }
 
 .note__content{
-  font-size: 1.1em;
+  font-size: 18px;
   margin-bottom: 10px;
   white-space: pre-wrap;
   word-wrap: break-word;
   border: none;
   outline: none;
   display: inline-block;
+  appearance: none;
+  resize: none;
+  width:100%;
+  height: auto;
+  font-weight: 200;
+  resize: none;
+  height: auto;
 }
 
 .note button {
@@ -165,7 +173,6 @@ form.create-note button {
   z-index: 1;
   background: #d9d9d9;
   border-radius: 0.5rem;
-  /* width: 15%; */
   text-align: flex-start;
   padding: 1rem;
   gap: 1rem;

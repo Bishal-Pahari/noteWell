@@ -1,7 +1,10 @@
 import React, { useState } from "react";
 
-export default function Header({profileURL,profileName}) {
+
+export default function Header({profileURL,profileName,logOut}) {
   const [showDropdown, setShowDropdown] = useState(false);
+   const [loginScreen,setLoginScreen]= useState(false);
+  
   return (
     <header>
 
@@ -26,7 +29,7 @@ export default function Header({profileURL,profileName}) {
           <div className="dropdown-menu-container">
             <h3 className="dropdown-menu-username">{profileName}</h3>
             <hr />
-            <button className="dropdown-menu-logout">Log Out</button>
+            <button className="dropdown-menu-logout"  onClick={logOut}>Log Out</button>
           </div>
         )}
       </div>

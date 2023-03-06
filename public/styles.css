@@ -92,6 +92,7 @@ footer p {
   outline: none;
   display: inline-block;
   appearance: none;
+  resize: none;
   width:100%;
   height: auto;
   font-weight: 200;

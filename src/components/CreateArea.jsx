@@ -1,5 +1,5 @@
 import React from "react";
-import { useState } from "react";
+import { useState ,useRef} from "react";
 
 import {app,db,auth} from './firebase';
 import {addDoc,collection} from 'firebase/firestore';
@@ -7,7 +7,7 @@ import {addDoc,collection} from 'firebase/firestore';
 const CreateArea = (props) => {
   const [isExpanded, setIsExpanded] = useState(false);
   const [notesLibrary,setNotesLibrary]=useState([]);
-
+  const textCreateAreaRef = useRef(null);
 
   const [note, setNote] = useState({
     title: "",
@@ -24,8 +24,14 @@ const CreateArea = (props) => {
         [name]: value,
       };
     });
+    autoResize()
   };
 
+  function autoResize() {
+    const textarea = textCreateAreaRef.current;
+    textarea.style.height = "auto";
+    textarea.style.height = textarea.scrollHeight + "px";
+  }
   const submitNote = (event) => {
     if (!note.content) {
       showNotification("Title and content cannot be empty!");
@@ -57,6 +63,7 @@ const CreateArea = (props) => {
     setIsExpanded(true);
   };
 
+
   return (
     <div>
       <form className="create-note">
@@ -66,6 +73,7 @@ const CreateArea = (props) => {
             onChange={handleChange}
             value={note.title}
             placeholder="Title"
+
           />
         ) : null}
 
@@ -75,7 +83,9 @@ const CreateArea = (props) => {
           onChange={handleChange}
           value={note.content}
           placeholder="Take a note..."
-          rows={isExpanded ? 3 : 1}
+          ref={textCreateAreaRef}
+          // rows={isExpanded ? 3 : 1}
+
         />
         <button onClick={submitNote}>Add</button>
       </form>

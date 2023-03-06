@@ -1,6 +1,6 @@
 
 
-import React from "react";
+import React, { useEffect } from "react";
 import { useState,useRef  } from "react";
 export default function Note(props) {
   const textAreaRef = useRef(null);
@@ -29,6 +29,10 @@ export default function Note(props) {
     textarea.style.height = "auto";
     textarea.style.height = textarea.scrollHeight + "px";
   }
+
+  useEffect(()=>{
+    autoResize();
+  },[]);
   const handleChangeForContent = (event) => {
     setNoteObj((prevNote) => {
       return {

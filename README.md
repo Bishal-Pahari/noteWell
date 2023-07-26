@@ -37,3 +37,5 @@ Make sure to also configure your Firebase project by adding your API keys in the
 
 ## Preview
 ![mobile](https://user-images.githubusercontent.com/61013432/223122437-f30d165e-518f-48db-bc7d-6c683f03c76f.png)
+
+**You can find the project report in the repository.**

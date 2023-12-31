@@ -1,6 +1,6 @@
 # noteWell
 
-NoteWell is a simple and user-friendly note-taking web application. The interface is clean and intuitive, making it easy to navigate and find the notes you need. With NoteWell, users can quickly and easily jot down important information, such as to-do lists, ideas, or reminders.
+NoteWell is a note-taking web application. The interface is clean and intuitive, making it easy to navigate and find the notes you need. With NoteWell, users can quickly and easily note down important information, such as to-do lists, ideas, or reminders.
 
 ## Preview
 
